@@ -9,7 +9,7 @@ IS_BUILD_DIR_EMPTY="$(ls -A $DOCKER_COREBOOT_DIR)"
 ## Update or clone git coreboot repo
 ################################################################################
 function gitUpdate() {
-  if [ -z $IS_BUILD_DIR_EMPTY ]; then
+  if [ -z "$IS_BUILD_DIR_EMPTY" ]; then
     # Clone Coreboot and fetch submodules
     git clone https://github.com/coreboot/coreboot.git $DOCKER_COREBOOT_DIR
     cd $DOCKER_COREBOOT_DIR || exit
