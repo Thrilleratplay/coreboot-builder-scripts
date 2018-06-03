@@ -91,9 +91,4 @@ docker run --rm -it \
     -e COREBOOT_TAG=$COREBOOT_TAG \
     -e COREBOOT_CONFIG=$COREBOOT_CONFIG \
     coreboot/coreboot-sdk:$COREBOOT_SDK_VERSION \
-    /home/coreboot/scripts/compile.sh
-
-## Move new files here
-if [ ! -z "$(ls $PWD/$MODEL/build/coreboot_*)" ]; then
-  mv "$PWD/$MODEL/build/coreboot_"* "$PWD"
-fi
+    /home/coreboot/scripts/compile.sh && ./flash.sh $MODEL
