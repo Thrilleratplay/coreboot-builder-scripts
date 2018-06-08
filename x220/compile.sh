@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0+
 source "/home/coreboot/common_scripts/variables.sh"
 source "/home/coreboot/common_scripts/download_coreboot.sh"
+source "/home/coreboot/common_scripts/config_and_make.sh"
 
 
 echo "The build currently display black screen during boot.  Exiting"
@@ -16,28 +17,15 @@ MODEL="x220"
 STOCK_BIOS_ROM="stock_bios.bin"
 
 ################################################################################
-#
+
+###############################################
+##   download/git clone/git pull Coreboot    ##
+###############################################
 downloadOrUpdateCoreboot
 
-######################
-##   Copy config   ##
-######################
-if [ -f "$DOCKER_COREBOOT_DIR/.config" ]; then
-  echo "Using existing config"
-else
-  if [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" ]; then
-    cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" "$DOCKER_COREBOOT_DIR/.config"
-  elif [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" ]; then
-    cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" "$DOCKER_COREBOOT_DIR/.config"
-  else
-    cp "$DOCKER_SCRIPT_DIR/config" "$DOCKER_COREBOOT_DIR/.config"
-  fi
-fi
-
-
-######################
-##   build ifdtool  ##
-######################
+#######################
+##   build ifdtool   ##
+#######################
 if [ ! -f "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" ]; then
   # Make ifdtool
   cd "$DOCKER_COREBOOT_DIR/util/ifdtool" || exit
@@ -45,9 +33,9 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" ]; then
   chmod +x ifdtool || exit
 fi
 
-#################################################################################
-##   Extract Intel ME firmware, Gigabit Ethernet firmware and flash descriptor ##
-#################################################################################
+###################################################################################
+##   Extract Intel ME firmware, Gigabit Ethernet firmware and flash descriptor   ##
+###################################################################################
 if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/" ]; then
   mkdir -p "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/"
 fi
@@ -71,20 +59,14 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/gbe.b
   rm flashregion_1_bios.bin
 fi
 
-##############
-##   make   ##
-##############
-cd "$DOCKER_COREBOOT_DIR" || exit;
+##############################
+##   Copy config and make   ##
+##############################
+configAndMake
 
-if [ $COREBOOT_CONFIG ]; then
-  make nconfig
-fi
-
-make
-
-###################
-##   Post build  ##
-###################
+#####################
+##   Post build    ##
+#####################
 if [ ! -f "$DOCKER_COREBOOT_DIR/build/coreboot.rom" ]; then
   echo "Uh oh. Things did not go according to plan."
   exit 1;
