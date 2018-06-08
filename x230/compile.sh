@@ -10,29 +10,44 @@ MAINBOARD="lenovo"
 MODEL="x230"
 
 ################################################################################
-#
+
+###############################################
+##   download/git clone/git pull Coreboot    ##
+###############################################
 downloadOrUpdateCoreboot
 
-# Copy config
+######################
+##   Copy config   ##
+######################
 if [ ! -f "$DOCKER_COREBOOT_DIR/.config" ]; then
+  echo "Using existing config"
+else
   if [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" ]; then
     cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" "$DOCKER_COREBOOT_DIR/.config"
+    echo "Using config-$COREBOOT_COMMIT"
   elif [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" ]; then
     cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" "$DOCKER_COREBOOT_DIR/.config"
+    echo "Using config-$COREBOOT_TAG"
   else
     cp "$DOCKER_SCRIPT_DIR/config" "$DOCKER_COREBOOT_DIR/.config"
+    echo "Using default config"
   fi
 fi
 
+##############
+##   make   ##
+##############
 cd "$DOCKER_COREBOOT_DIR" || exit;
 
-### make
 if [ $COREBOOT_CONFIG ]; then
   make nconfig
 fi
 
 make
 
+###################
+##   Post build  ##
+###################
 if [ ! -f "$DOCKER_COREBOOT_DIR/build/coreboot.rom" ]; then
   echo "Uh oh. Things did not go according to plan."
   exit 1;
