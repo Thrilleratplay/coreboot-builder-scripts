@@ -19,8 +19,12 @@ STOCK_BIOS_ROM="stock_bios.bin"
 #
 downloadOrUpdateCoreboot
 
-# Copy config
-if [ ! -f "$DOCKER_COREBOOT_DIR/.config" ]; then
+######################
+##   Copy config   ##
+######################
+if [ -f "$DOCKER_COREBOOT_DIR/.config" ]; then
+  echo "Using existing config"
+else
   if [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" ]; then
     cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" "$DOCKER_COREBOOT_DIR/.config"
   elif [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" ]; then
@@ -30,6 +34,10 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/.config" ]; then
   fi
 fi
 
+
+######################
+##   build ifdtool  ##
+######################
 if [ ! -f "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" ]; then
   # Make ifdtool
   cd "$DOCKER_COREBOOT_DIR/util/ifdtool" || exit
@@ -37,6 +45,9 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" ]; then
   chmod +x ifdtool || exit
 fi
 
+#################################################################################
+##   Extract Intel ME firmware, Gigabit Ethernet firmware and flash descriptor ##
+#################################################################################
 if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/" ]; then
   mkdir -p "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/"
 fi
@@ -60,15 +71,20 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/gbe.b
   rm flashregion_1_bios.bin
 fi
 
+##############
+##   make   ##
+##############
 cd "$DOCKER_COREBOOT_DIR" || exit;
 
-### make
 if [ $COREBOOT_CONFIG ]; then
   make nconfig
 fi
 
 make
 
+###################
+##   Post build  ##
+###################
 if [ ! -f "$DOCKER_COREBOOT_DIR/build/coreboot.rom" ]; then
   echo "Uh oh. Things did not go according to plan."
   exit 1;
