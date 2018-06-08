@@ -37,13 +37,13 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" ]; then
   chmod +x ifdtool || exit
 fi
 
-if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/lenovo/x220/" ]; then
-  mkdir -p "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/lenovo/x220/"
+if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/" ]; then
+  mkdir -p "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/"
 fi
 
 
-if [ ! -f "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/lenovo/x220/gbe.bin" ]; then
-  cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/lenovo/x220/" || exit
+if [ ! -f "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/gbe.bin" ]; then
+  cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/" || exit
 
   cp "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" .
   cp "$DOCKER_SCRIPT_DIR/stock_bios/$STOCK_BIOS_ROM" .
