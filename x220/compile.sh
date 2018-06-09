@@ -5,9 +5,6 @@ source "/home/coreboot/common_scripts/download_coreboot.sh"
 source "/home/coreboot/common_scripts/config_and_make.sh"
 
 
-echo "The build currently display black screen during boot.  Exiting"
-exit 1;
-
 ################################################################################
 ## MODEL VARIABLES
 ################################################################################
