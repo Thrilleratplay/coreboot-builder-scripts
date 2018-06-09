@@ -44,11 +44,11 @@ if [ ! -f "$PWD/$MODEL/layout.txt" ]; then
 fi
 
 while true; do
-    read -p "Do you wish to flash the bios with $ROM_FILE?" yn
+    read -p "Do you wish to flash the bios with $ROM_FILE?  " yn
     case $yn in
         [Yy]* )
           # Back up and write BIOS
-          sudo flashrom -p internal -r "$ROM_FILE.backup" && sudo flashrom -p internal --layout "$PWD/$MODEL/layout.txt" --image bios -w $ROM_FILE;
+          sudo flashrom -p internal -r "$ROM_FILE.backup" && sudo "$PWD/$MODEL/./flashrom.sh" $ROM_FILE
           break;;
         [Nn]* )
           exit;;
