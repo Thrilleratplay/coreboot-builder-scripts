@@ -61,12 +61,12 @@ function downloadCoreboot() {
   LATEST_BLOBS=$(echo -n "$CB_RELEASES" | fgrep "coreboot-blobs-" | sort -V | tail -n1)
   COREBOOT_VERSION=$(echo -n "$LATEST_RELEASE"  | sed 's/coreboot-//' | sed 's/.tar.xz//')
 
-  echo "Beginning download of Coreboot v$LATEST_RELEASE..."
+  echo "Beginning download of $LATEST_RELEASE..."
 
   wget -q -O- https://coreboot.org/releases/$LATEST_RELEASE | unxz -c | tar -C "$DOCKER_COREBOOT_DIR" -x --strip 1
   wget -q -O- https://coreboot.org/releases/$LATEST_BLOBS | unxz -c | tar -C "$DOCKER_COREBOOT_DIR" -x --strip 1
 
-  echo "Download of Coreboot v$LATEST_RELEASE complete"
+  echo "Downloading $LATEST_RELEASE complete"
 
   export COREBOOT_VERSION;
 }
