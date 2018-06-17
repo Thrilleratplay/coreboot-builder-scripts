@@ -42,7 +42,9 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/gbe.b
   cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/mainboard/$MAINBOARD/$MODEL/" || exit
 
   cp "$DOCKER_COREBOOT_DIR/util/ifdtool/ifdtool" .
-  cp "$DOCKER_SCRIPT_DIR/stock_bios/$STOCK_BIOS_ROM" .
+
+  # ALWAYS COPY THE ORIGINAL.  Never modified the original stock bios file
+  cp "$DOCKER_STOCK_BIOS_DIR/$STOCK_BIOS_ROM" .
 
   # unlock, extract blobs and rename
   ./ifdtool -u "$STOCK_BIOS_ROM" || exit
