@@ -18,7 +18,7 @@ Bash scripts and config files to simplify building of Coreboot using the officia
 If a tag, commit or bleeding-edge flag is not given, the latest Coreboot release will be built
 ```
 
-Once the build is complete, you will be asked to baackup the existing and flash the new rom.
+Once the build is complete, you will be asked to backup the existing and flash the new rom.
 
 NOTE: Internal flashing can only be complete if Coreboot has already been flashed externally and ifd has been unlocked.
 
@@ -28,3 +28,8 @@ NOTE: Internal flashing can only be complete if Coreboot has already been flashe
 
 * Build the latest commit  
     `./build.sh --config --bleeding-edge X230`
+
+
+## Per device compiling and flashing details
+    * [Lenovo Thinkpad X220](x220/README.md)
+    * [Lenovo Thinkpad X230](x230/README.md)
