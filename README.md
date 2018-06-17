@@ -31,5 +31,5 @@ NOTE: Internal flashing can only be complete if Coreboot has already been flashe
 
 
 ## Per device compiling and flashing details
-    * [Lenovo Thinkpad X220](x220/README.md)
-    * [Lenovo Thinkpad X230](x230/README.md)
+* [Lenovo Thinkpad X220](x220/README.md)
+* [Lenovo Thinkpad X230](x230/README.md)
