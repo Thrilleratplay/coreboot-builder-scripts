@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 # SPDX-License-Identifier: GPL-3.0+
 set -e
 
 ## import variables
-source "./common/variables.sh"
+./common/variables.sh
 
 ################################################################################
 ## Menu
@@ -15,8 +15,10 @@ AVAILABLE_MODELS=$(ls -d */ | sed  's/\///g' | fgrep -v common)
 ## Help menu
 usage()
 {
-  echo "Usage: "$'\n'
-  echo "  $0 [-t <TAG>] [-c <COMMIT>] [--config] [--bleeding-edge] [--clean-slate] <model>"$'\n'
+  echo "Usage: "
+  echo
+  echo "  $0 [-t <TAG>] [-c <COMMIT>] [--config] [--bleeding-edge] [--clean-slate] <model>"
+  echo
   echo "  --bleeding-edge              Build from the latest commit"
   echo "  --clean-slate                Purge previous build directory and config"
   echo "  -c, --commit <commit>        Git commit hash"
@@ -24,11 +26,13 @@ usage()
   echo "  -h, --help                   Show this help"
   echo "  -i, --config                 Execute with interactive make config"
   echo "  -t, --tag <tag>              Git tag/version"
+  echo
   echo "If a tag, commit or bleeding-edge flag is not given, the latest Coreboot release will be built."
-
-  echo $'\n'"Available models:"
+  echo
+  echo
+  echo "Available models:"
   for AVAILABLE_MODEL in $AVAILABLE_MODELS; do
-      echo $'\t'$AVAILABLE_MODEL
+      echo "$(printf '\t')$AVAILABLE_MODEL"
   done
 }
 
@@ -70,7 +74,7 @@ done
 MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 
 ## Check if valid model
-if [[ -z $MODEL || ! -d "$PWD/$MODEL" ]]; then
+if [ -z $MODEL ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
 fi;
@@ -96,4 +100,4 @@ docker run --rm -it \
     -e COREBOOT_TAG=$COREBOOT_TAG \
     -e COREBOOT_CONFIG=$COREBOOT_CONFIG \
     coreboot/coreboot-sdk:$COREBOOT_SDK_VERSION \
-    /home/coreboot/scripts/compile.sh && [[ -n $FLASH_AFTER_BUILD ]] && ./flash.sh $MODEL
+    /home/coreboot/scripts/compile.sh && [ -n "$FLASH_AFTER_BUILD" ] && ./flash.sh $MODEL

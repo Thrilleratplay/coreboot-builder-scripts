@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # SPDX-License-Identifier: GPL-3.0+
 set -e
 
@@ -12,12 +12,14 @@ AVAILABLE_MODELS=$(ls -d */ | sed  's/\///g' | fgrep -v common)
 ## Help menu
 usage()
 {
-  echo "Usage: "$'\n'
-  echo "  $0 <model>"$'\n'
-
-  echo $'\n'"Available models:"
+  echo "Usage: "
+  echo
+  echo "  $0 <model>"
+  echo
+  echo
+  echo "Available models:"
   for AVAILABLE_MODEL in $AVAILABLE_MODELS; do
-      echo $'\t'$AVAILABLE_MODEL
+      echo "$(printf '\t')$AVAILABLE_MODEL"
   done
 }
 
@@ -25,7 +27,7 @@ usage()
 MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 
 ## Check if valid model
-if [[ -z $MODEL || ! -d "$PWD/$MODEL" ]]; then
+if [ -z $MODEL ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
 fi;
@@ -44,7 +46,8 @@ if [ ! -f "$PWD/$MODEL/layout.txt" ]; then
 fi
 
 while true; do
-    read -p "Do you wish to flash the bios with $ROM_FILE?  " yn
+    printf "Do you wish to flash the bios with %s?  " "$ROM_FILE"
+    read yn
     case $yn in
         [Yy]* )
           # Back up and write BIOS
