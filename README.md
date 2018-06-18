@@ -1,5 +1,8 @@
 Coreboot Builder scripts
 ==========
+[![Build Status](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts.svg?branch=master)](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts)
+
+
 Bash scripts and config files to simplify building of Coreboot using the official coreboot-sdk docker image.
 
 
