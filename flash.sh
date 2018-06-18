@@ -32,7 +32,7 @@ if [ -z "$MODEL" ] || [ ! -d "$PWD/$MODEL" ]; then
   exit 1;
 fi;
 
-ROM_FILE=$(find "$PWD/$MODEL/build/" -name "coreboot_*-complete.rom" 2>/dev/null -printf "%T+\\t%p\\n" | sort -r | cut -f2 | head -n1)
+ROM_FILE=$(find "$PWD/$MODEL/build/" -name "coreboot_*-complete.rom" -printf "%T+\\t%p\\n" | sort -r | cut -f2 | head -n1 2>/dev/null)
 
 ## Move new files here
 if [ -z "$ROM_FILE" ]; then
