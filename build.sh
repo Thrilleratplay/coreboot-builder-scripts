@@ -3,14 +3,14 @@
 set -e
 
 ## import variables
-./common/variables.sh
+. ./common/variables.sh
 
 ################################################################################
 ## Menu
 ################################################################################
 
 ## Parse avialble models from directory names
-AVAILABLE_MODELS=$(ls -d */ | sed  's/\///g' | fgrep -v common)
+AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git")
 
 ## Help menu
 usage()
@@ -74,7 +74,7 @@ done
 MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 
 ## Check if valid model
-if [ -z $MODEL ] || [ ! -d "$PWD/$MODEL" ]; then
+if [ -z "$MODEL" ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
 fi;
@@ -84,7 +84,7 @@ fi;
 
 if [ ! -d "$PWD/$MODEL/build" ]; then
   mkdir "$PWD/$MODEL/build"
-elif [ $CLEAN_SLATE ]; then
+elif [ "$CLEAN_SLATE" ]; then
   rm -rf "$PWD/$MODEL/build" || true
   mkdir "$PWD/$MODEL/build"
 fi
@@ -92,12 +92,12 @@ fi
 ## Run Docker
 docker run --rm -it \
     --user "$(id -u):$(id -g)" \
-    -v "$PWD/$MODEL/build":$DOCKER_COREBOOT_DIR \
-    -v $PWD/$MODEL:$DOCKER_SCRIPT_DIR \
-    -v $PWD/common:$DOCKER_COMMON_SCRIPT_DIR \
-    -v "$PWD/$MODEL/stock_bios":$DOCKER_STOCK_BIOS_DIR:ro \
-    -e COREBOOT_COMMIT=$COREBOOT_COMMIT \
-    -e COREBOOT_TAG=$COREBOOT_TAG \
-    -e COREBOOT_CONFIG=$COREBOOT_CONFIG \
-    coreboot/coreboot-sdk:$COREBOOT_SDK_VERSION \
-    /home/coreboot/scripts/compile.sh && [ -n "$FLASH_AFTER_BUILD" ] && ./flash.sh $MODEL
+    -v "$PWD/$MODEL/build:$DOCKER_COREBOOT_DIR" \
+    -v "$PWD/$MODEL:$DOCKER_SCRIPT_DIR" \
+    -v "$PWD/common:$DOCKER_COMMON_SCRIPT_DIR" \
+    -v "$PWD/$MODEL/stock_bios:$DOCKER_STOCK_BIOS_DIR:ro" \
+    -e COREBOOT_COMMIT="$COREBOOT_COMMIT" \
+    -e COREBOOT_TAG="$COREBOOT_TAG" \
+    -e COREBOOT_CONFIG="$COREBOOT_CONFIG" \
+    coreboot/coreboot-sdk:"$COREBOOT_SDK_VERSION" \
+    /home/coreboot/scripts/compile.sh && [ -n "$FLASH_AFTER_BUILD" ] && ./flash.sh "$MODEL"

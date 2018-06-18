@@ -1,6 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0+
-source "/home/coreboot/common_scripts/variables.sh"
+
+# shellcheck disable=SC1091
+source /home/coreboot/common_scripts/variables.sh
 
 ################################################################################
 ## Copy config and run make
@@ -29,7 +31,7 @@ function configAndMake() {
   ##############
   cd "$DOCKER_COREBOOT_DIR" || exit;
 
-  if [ $COREBOOT_CONFIG ]; then
+  if [ "$COREBOOT_CONFIG" ]; then
     make nconfig
   fi
 

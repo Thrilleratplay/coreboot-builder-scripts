@@ -7,7 +7,7 @@ set -e
 ################################################################################
 
 ## Parse avialble models from directory names
-AVAILABLE_MODELS=$(ls -d */ | sed  's/\///g' | fgrep -v common)
+AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git")
 
 ## Help menu
 usage()
@@ -27,15 +27,15 @@ usage()
 MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 
 ## Check if valid model
-if [ -z $MODEL ] || [ ! -d "$PWD/$MODEL" ]; then
+if [ -z "$MODEL" ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
 fi;
 
-ROM_FILE=$(ls -t "$PWD/$MODEL/build/coreboot_"*"-complete.rom" 2>/dev/null | head -n1)
+ROM_FILE=$(find "$PWD/$MODEL/build/" -name "coreboot_*-complete.rom" 2>/dev/null -printf "%T+\\t%p\\n" | sort -r | cut -f2 | head -n1)
 
 ## Move new files here
-if [ -z $ROM_FILE ]; then
+if [ -z "$ROM_FILE" ]; then
   echo "Could not find Coreboot rom file for $MODEL"
   exit 1;
 fi
@@ -47,11 +47,11 @@ fi
 
 while true; do
     printf "Do you wish to flash the bios with %s?  " "$ROM_FILE"
-    read yn
+    read -r yn
     case $yn in
         [Yy]* )
           # Back up and write BIOS
-          sudo "$PWD/$MODEL/./flashrom.sh" $ROM_FILE
+          sudo "$PWD/$MODEL/./flashrom.sh" "$ROM_FILE"
           break;;
         [Nn]* )
           exit;;

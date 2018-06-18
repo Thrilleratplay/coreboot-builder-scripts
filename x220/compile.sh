@@ -1,8 +1,10 @@
 #!/bin/bash
 # SPDX-License-Identifier: GPL-3.0+
-source "/home/coreboot/common_scripts/variables.sh"
-source "/home/coreboot/common_scripts/download_coreboot.sh"
-source "/home/coreboot/common_scripts/config_and_make.sh"
+
+# shellcheck disable=SC1091
+source /home/coreboot/common_scripts/./variables.sh
+source /home/coreboot/common_scripts/./download_coreboot.sh
+source /home/coreboot/common_scripts/./config_and_make.sh
 
 
 ################################################################################
