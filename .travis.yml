@@ -8,4 +8,4 @@ install:
   - shellcheck --version
 
 script:
-  - shellcheck -a *.sh */*.sh 
+  - shellcheck -x -a *.sh && shellcheck -x -a */*.sh  
