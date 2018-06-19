@@ -7,6 +7,12 @@ Bash scripts and config files to simplify building of Coreboot using the officia
 
 
 
+## BEFORE YOU BEGIN !!!!!
+
+If your device has the stock BIOS installed, you must flash the BIOS chip externally first. I suggest starting with [Skulls](https://github.com/merge/skulls) which makes that first install as painless as possible.  
+
+While the compiled Coreboot builds this repo generates can be flashed externally, the intent of this project is to simplify updating an existing Coreboot BIOS.  
+
 ## Usage
 
 ```bash
