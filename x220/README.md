@@ -1,9 +1,9 @@
-# Lenovo x220
+# Lenovo x220/x220 Tablet
 
 ### Prep work
-A flashrom binary dump of the stock x220 BIOS is needed to compile Coreboot.
+A flashrom binary dump of the stock x220/x220T BIOS is needed to compile Coreboot.
 
-* Place a copy of this dump under the x220 `stock_bios` directory and name it `stock_bios.bin` (to put it another way `./x220/stock_bios/stock_bios.bin`)
+* Place a copy of this dump under the x220/x220T `stock_bios` directory and name it `stock_bios.bin` (to put it another way `./x220/stock_bios/stock_bios.bin`)
 
 ### Compiling
 Build the latest merged into the master git branch:  
