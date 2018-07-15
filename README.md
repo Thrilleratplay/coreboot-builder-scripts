@@ -41,9 +41,11 @@ NOTE: Internal flashing can only be complete if Coreboot has already been flashe
 ## Configuration
 
 The make configs include
+* Primary payload is the latest stable SeaBIOS
 * All secondary payloads are added by default
 * High resolution libgfxinit is used over legacy framebuffer and VGA BIOS
 
 ## Per device compiling and flashing details
 * [Lenovo Thinkpad X220 and x220 Tablet](x220/README.md)
 * [Lenovo Thinkpad X230](x230/README.md)
+* [Lenovo Thinkpad T430](t430/README.md)
