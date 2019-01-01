@@ -13,18 +13,27 @@ function configAndMake() {
   ######################
   if [ -f "$DOCKER_COREBOOT_DIR/.config" ]; then
     echo "Using existing config"
+
+    # clean config to regenerate
+    make savedefconfig
+
+    if [ -s "$DOCKER_COREBOOT_DIR/defconfig" ]; then
+      mv "$DOCKER_COREBOOT_DIR/defconfig" "$DOCKER_COREBOOT_CONFIG_DIR/"
+    fi
   else
-    if [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" ]; then
-      cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_COMMIT" "$DOCKER_COREBOOT_DIR/.config"
+    if [ -f "$DOCKER_SCRIPT_DIR/defconfig-$COREBOOT_COMMIT" ]; then
+      cp "$DOCKER_SCRIPT_DIR/defconfig-$COREBOOT_COMMIT" "$DOCKER_COREBOOT_CONFIG_DIR/defconfig"
       echo "Using config-$COREBOOT_COMMIT"
-    elif [ -f "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" ]; then
-      cp "$DOCKER_SCRIPT_DIR/config-$COREBOOT_TAG" "$DOCKER_COREBOOT_DIR/.config"
+    elif [ -f "$DOCKER_SCRIPT_DIR/defconfig-$COREBOOT_TAG" ]; then
+      cp "$DOCKER_SCRIPT_DIR/defconfig-$COREBOOT_TAG" "$DOCKER_COREBOOT_CONFIG_DIR/defconfig"
       echo "Using config-$COREBOOT_TAG"
     else
-      cp "$DOCKER_SCRIPT_DIR/config" "$DOCKER_COREBOOT_DIR/.config"
+      cp "$DOCKER_SCRIPT_DIR/defconfig" "$DOCKER_COREBOOT_CONFIG_DIR/defconfig"
       echo "Using default config"
     fi
   fi
+
+  make defconfig
 
   ##############
   ##   make   ##
