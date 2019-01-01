@@ -33,16 +33,19 @@ function configAndMake() {
     fi
   fi
 
-  make defconfig
-
-  ##############
-  ##   make   ##
-  ##############
   cd "$DOCKER_COREBOOT_DIR" || exit;
+
+  ################
+  ##  Config   ##
+  ###############
+  make defconfig
 
   if [ "$COREBOOT_CONFIG" ]; then
     make nconfig
   fi
 
+  ##############
+  ##   make   ##
+  ##############
   make
 }
