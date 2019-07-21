@@ -19,11 +19,17 @@ function gitUpdate() {
 
     # blobs are ignored from updates.  Manually clone to prevent compile errors later from non empty directory cloning
     git clone https://github.com/coreboot/blobs.git 3rdparty/blobs/
+
+    # intel-microcode are ignored from updates.  Manually clone to prevent compile errors later from non empty directory cloning
+    git clone https://github.com/coreboot/intel-microcode.git 3rdparty/intel-microcode/
   else
     cd "$DOCKER_COREBOOT_DIR" || exit
     git fetch --all --tags --prune
 
     cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/" || exit
+    git fetch --all --tags --prune
+
+    cd "$DOCKER_COREBOOT_DIR/3rdparty/intel-microcode/" || exit
     git fetch --all --tags --prune
   fi
 }
