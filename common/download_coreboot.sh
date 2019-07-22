@@ -26,6 +26,10 @@ function gitUpdate() {
     cd "$DOCKER_COREBOOT_DIR" || exit
     git fetch --all --tags --prune
 
+    if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/intel-microcode/" ]; then
+      git clone https://github.com/coreboot/intel-microcode.git 3rdparty/intel-microcode/
+    fi
+
     cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/" || exit
     git fetch --all --tags --prune
 
