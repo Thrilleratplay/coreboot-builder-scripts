@@ -8,6 +8,9 @@ source /home/coreboot/common_scripts/variables.sh
 ## Copy config and run make
 ################################################################################
 function configAndMake() {
+
+  cd "$DOCKER_COREBOOT_DIR" || exit;
+
   ######################
   ##   Copy config   ##
   ######################
@@ -32,8 +35,6 @@ function configAndMake() {
       echo "Using default config"
     fi
   fi
-
-  cd "$DOCKER_COREBOOT_DIR" || exit;
 
   ################
   ##  Config   ##
