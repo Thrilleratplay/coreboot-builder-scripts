@@ -1,4 +1,4 @@
-#!/bin/bash#!/bin/bash
+#!/bin/bash
 # SPDX-License-Identifier: GPL-3.0+
 set -e
 
