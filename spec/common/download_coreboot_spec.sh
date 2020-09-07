@@ -126,9 +126,9 @@ Describe "download_coreboot.sh"
       When call downloadCoreboot
       The line 1 of output should eq "Beginning download of ..."
       The line 2 of output should eq "tar called with parameters:"
-      The line 3 of output should eq "-C /data/projects/coreboot-builder-scripts/spec/test_tmp -x --strip 1"
+      The line 3 of output should eq "-C $TEST_TMP_DIR -x --strip 1"
       The line 4 of output should eq "tar called with parameters:"
-      The line 5 of output should eq "-C /data/projects/coreboot-builder-scripts/spec/test_tmp -x --strip 1"
+      The line 5 of output should eq "-C $TEST_TMP_DIR -x --strip 1"
       The line 6 of output should eq "Downloading  complete"
     End
   End
@@ -140,9 +140,9 @@ Describe "download_coreboot.sh"
       When call downloadOrUpdateCoreboot
       The line 1 of output should eq "Beginning download of ..."
       The line 2 of output should eq "tar called with parameters:"
-      The line 3 of output should eq "-C /data/projects/coreboot-builder-scripts/spec/test_tmp -x --strip 1"
+      The line 3 of output should eq "-C $TEST_TMP_DIR -x --strip 1"
       The line 4 of output should eq "tar called with parameters:"
-      The line 5 of output should eq "-C /data/projects/coreboot-builder-scripts/spec/test_tmp -x --strip 1"
+      The line 5 of output should eq "-C $TEST_TMP_DIR -x --strip 1"
       The line 6 of output should eq "Downloading  complete"
     End
 
