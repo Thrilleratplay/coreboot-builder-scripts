@@ -5,7 +5,7 @@ Describe "variables.sh"
   Include "./common/variables.sh"
 
   It "sets enviromental variables"
-    The variable COREBOOT_SDK_VERSION should eq "1.52"
+    The variable COREBOOT_SDK_VERSION should eq "1.53"
     The variable DOCKER_ROOT_DIR should eq "/home/coreboot"
     The variable DOCKER_SCRIPT_DIR should eq "$DOCKER_ROOT_DIR/scripts"
     The variable DOCKER_COMMON_SCRIPT_DIR should eq "$DOCKER_ROOT_DIR/common_scripts"
