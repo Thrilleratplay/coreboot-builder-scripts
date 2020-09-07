@@ -101,7 +101,7 @@ Describe "build.sh"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
 
@@ -110,7 +110,7 @@ Describe "build.sh"
     touch "$TEST_TMP_DIR/t800/build/random_file"
     When run source "$PROJECT_PATH/build.sh" --clean-slate t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
     The file "$TEST_TMP_DIR/t800/build/random_file" should not be exist
   End
 
@@ -119,21 +119,21 @@ Describe "build.sh"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" -c abc123 t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=abc123 -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=abc123 -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
   It "test with valid model and tag flag"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" --tag tag_xyz t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG=tag_xyz -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG=tag_xyz -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
   It "test with valid model and bleeding edge flag"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" --bleeding-edge t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
 
@@ -167,7 +167,7 @@ Describe "build.sh"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" --bleeding-edge -i t800
     The status should be failure
-    The output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG=true coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG=true coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
   It "test with only valid model and flash after build flag"
@@ -175,7 +175,7 @@ Describe "build.sh"
     echo "echo flashing" > "$TEST_TMP_DIR/flash.sh"
     chmod +x "$TEST_TMP_DIR/flash.sh"
     When run source "$PROJECT_PATH/build.sh" --flash t800
-    The line 1 of output should eq "run --rm -it --user 1000:100 -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The line 1 of output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT= -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
     The line 2 of output should eq "flashing"
     rm "$TEST_TMP_DIR/flash.sh"
   End
