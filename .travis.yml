@@ -1,4 +1,4 @@
-language: shell
+language: bash
 os: linux
 dist: bionic
 addons:
