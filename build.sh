@@ -3,14 +3,19 @@
 set -e
 
 ## import variables
-. ./common/variables.sh
+# shellcheck disable=SC1091
+# LCOV_EXCL_START
+if [ -z "$UNIT_TESTING" ]; then
+  . ./common/variables.sh
+fi
+# LCOV_EXCL_STOP
 
 ################################################################################
 ## Menu
 ################################################################################
 
 ## Parse avialble models from directory names
-AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git")
+AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git|spec|coverage")
 
 ## Help menu
 usage()
@@ -53,7 +58,7 @@ do
         FLASH_AFTER_BUILD=true
         shift 1;;
       -h | --help)
-        usage >&2
+        usage
         exit 0;;
       -i | --config)
         COREBOOT_CONFIG=true
@@ -77,7 +82,7 @@ MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 if [ -z "$MODEL" ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
-fi;
+fi
 
 ################################################################################
 ################################################################################

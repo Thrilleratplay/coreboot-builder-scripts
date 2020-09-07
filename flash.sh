@@ -30,7 +30,7 @@ MODEL=$(echo "$@" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]');
 if [ -z "$MODEL" ] || [ ! -d "$PWD/$MODEL" ]; then
   usage
   exit 1;
-fi;
+fi
 
 ROM_FILE=$(find "$PWD/$MODEL/build/" -name "coreboot_*-complete.rom" -printf "%T+\\t%p\\n" | sort -r | cut -f2 | head -n1 2>/dev/null)
 

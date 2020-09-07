@@ -2,10 +2,13 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 # shellcheck disable=SC1091
-source /home/coreboot/common_scripts/variables.sh
+# LCOV_EXCL_START
+if [ -z "$UNIT_TESTING" ]; then
+  source /home/coreboot/common_scripts/variables.sh
+fi
+# LCOV_EXCL_STOP
 
 IS_BUILD_DIR_EMPTY=$(ls -A "$DOCKER_COREBOOT_DIR")
-
 
 ################################################################################
 ## Update or clone git coreboot repo

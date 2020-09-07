@@ -2,7 +2,11 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 # shellcheck disable=SC1091
-source /home/coreboot/common_scripts/variables.sh
+# LCOV_EXCL_START
+if [ -z "$UNIT_TESTING" ]; then
+  source /home/coreboot/common_scripts/variables.sh
+fi
+# LCOV_EXCL_STOP
 
 ################################################################################
 ## Copy config and run make
@@ -20,7 +24,7 @@ function configAndMake() {
     # clean config to regenerate
     make savedefconfig
 
-    if [ -s "$DOCKER_COREBOOT_DIR/defconfig" ]; then
+    if [ -e "$DOCKER_COREBOOT_DIR/defconfig" ]; then
       mv "$DOCKER_COREBOOT_DIR/defconfig" "$DOCKER_COREBOOT_CONFIG_DIR/"
     fi
   else
