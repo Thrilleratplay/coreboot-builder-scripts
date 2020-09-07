@@ -15,4 +15,4 @@ before_install:
   - curl -fsSL https://git.io/shellspec | sh -s master -y
 script:
   - shellcheck -x -a  *.sh && shellcheck -x -a  */*.sh
-  - shellspec
+  - shellspec -s bash 
