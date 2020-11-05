@@ -12,4 +12,4 @@ if [ -z "$1" ]; then
     exit 1;
 fi
 
-flashrom -p internal:laptop=force_I_want_a_brick -r "$1.backup" -c MX25L6405 && flashrom -p internal:laptop=force_I_want_a_brick -w "$1" -c MX25L6405
+flashrom -p internal:ich_spi_mode=hwseq -r "$1.backup" --ifd --image bios && flashrom -p internal:ich_spi_mode=hwseq -w "$1" --ifd --image bios
