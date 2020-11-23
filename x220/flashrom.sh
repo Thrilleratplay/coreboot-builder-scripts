@@ -12,4 +12,4 @@ if [ -z "$1" ]; then
     exit 1;
 fi
 
-flashrom -p internal:ich_spi_mode=hwseq -r "$1.backup" --ifd --image bios && flashrom -p internal:ich_spi_mode=hwseq -w "$1" --ifd --image bios
+flashrom -p internal:ich_spi_mode=hwseq -r "$1.backup" --layout "$PWD/x220/layout.txt" --image bios && flashrom -p internal:ich_spi_mode=hwseq -w "$1" --layout "$PWD/x220/layout.txt" --image bios
