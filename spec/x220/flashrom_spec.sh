@@ -15,8 +15,8 @@ Describe "x220 flashrom"
 
   It "test flashrom.sh name argument"
     When run source ./x220/flashrom.sh test_name.rom
-    The line 1 of output should eq "-p internal:ich_spi_mode=hwseq -r test_name.rom.backup --ifd --image bios"
-    The line 2 of output should eq "-p internal:ich_spi_mode=hwseq -w test_name.rom --ifd --image bios"
+    The line 1 of output should eq "-p internal:ich_spi_mode=hwseq -r test_name.rom.backup --layout $PROJECT_PATH/x220/layout.txt --image bios"
+    The line 2 of output should eq "-p internal:ich_spi_mode=hwseq -w test_name.rom --layout $PROJECT_PATH/x220/layout.txt --image bios"
   End
 
   command() {
