@@ -48,4 +48,5 @@ The make configs include
 ## Per device compiling and flashing details
 * [Lenovo Thinkpad X220 and x220 Tablet](x220/README.md)
 * [Lenovo Thinkpad X230](x230/README.md)
+* [Lenovo Thinkpad X230 Tablet](x230t/README.md)
 * [Lenovo Thinkpad T430](t430/README.md)
