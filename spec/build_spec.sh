@@ -44,8 +44,8 @@ Describe "build.sh"
     The line 14 of output should eq ""
     The line 15 of output should eq ""
     The line 16 of output should eq "Available models:"
-    The line 17 of output should eq "$(printf '\t')t800"
-    The line 18 of output should eq "$(printf '\t')t1000"
+    The line 17 of output should eq "$(printf '\t')t1000"
+    The line 18 of output should eq "$(printf '\t')t800"
   End
 
   It "test with help"
@@ -68,8 +68,8 @@ Describe "build.sh"
     The line 14 of output should eq ""
     The line 15 of output should eq ""
     The line 16 of output should eq "Available models:"
-    The line 17 of output should eq "$(printf '\t')t800"
-    The line 18 of output should eq "$(printf '\t')t1000"
+    The line 17 of output should eq "$(printf '\t')t1000"
+    The line 18 of output should eq "$(printf '\t')t800"
   End
 
   It "test with invalid model"
@@ -93,8 +93,8 @@ Describe "build.sh"
     The line 14 of output should eq ""
     The line 15 of output should eq ""
     The line 16 of output should eq "Available models:"
-    The line 17 of output should eq "$(printf '\t')t800"
-    The line 18 of output should eq "$(printf '\t')t1000"
+    The line 17 of output should eq "$(printf '\t')t1000"
+    The line 18 of output should eq "$(printf '\t')t800"
   End
 
   It "test with only valid model"
@@ -158,8 +158,8 @@ Describe "build.sh"
     The line 15 of stderr should eq ""
     The line 16 of stderr should eq ""
     The line 17 of stderr should eq "Available models:"
-    The line 18 of stderr should eq "$(printf '\t')t800"
-    The line 19 of stderr should eq "$(printf '\t')t1000"
+    The line 18 of stderr should eq "$(printf '\t')t1000"
+    The line 19 of stderr should eq "$(printf '\t')t800"
   End
 
 
