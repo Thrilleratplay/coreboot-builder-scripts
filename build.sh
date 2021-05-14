@@ -15,7 +15,7 @@ fi
 ################################################################################
 
 ## Parse avialble models from directory names
-AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git|spec|coverage")
+AVAILABLE_MODELS=$(find ./ -maxdepth 1 -mindepth 1 -type d | sed  's/\.\///g' | grep -Ev "common|git|spec|coverage" | sort)
 
 ## Help menu
 usage()
