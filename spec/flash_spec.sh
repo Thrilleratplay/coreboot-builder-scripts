@@ -26,8 +26,8 @@ Describe "flash.sh"
     The line 4 of output should eq ""
     The line 5 of output should eq ""
     The line 6 of output should eq "Available models:"
-    The line 7 of output should eq "$(printf '\t')t800"
-    The line 8 of output should eq "$(printf '\t')t1000"
+    The line 7 of output should eq "$(printf '\t')t1000"
+    The line 8 of output should eq "$(printf '\t')t800"
   End
 
   It "test flashrom.sh fails with invalid name argument"
@@ -40,8 +40,8 @@ Describe "flash.sh"
     The line 4 of output should eq ""
     The line 5 of output should eq ""
     The line 6 of output should eq "Available models:"
-    The line 7 of output should eq "$(printf '\t')t800"
-    The line 8 of output should eq "$(printf '\t')t1000"
+    The line 7 of output should eq "$(printf '\t')t1000"
+    The line 8 of output should eq "$(printf '\t')t800"
   End
 
   It "test flashrom.sh fails with valid name argument but no rom file to flash"
