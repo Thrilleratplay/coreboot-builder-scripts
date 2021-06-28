@@ -64,6 +64,8 @@ function downloadUnzip() {
 #################################################################################
 function downloadAndExtractmrc() {
   if [ ! -f "$DOCKER_COREBOOT_DIR/mrc.bin" ]; then
+    # FIXME:  Due to connection stability problems trying to download the chromebook image,
+    #         use the mrc.bin from skulls for now
     wget -P "$DOCKER_COREBOOT_DIR/" https://github.com/merge/skulls/raw/master/t440p/mrc.bin
 
     # Create temp directory
