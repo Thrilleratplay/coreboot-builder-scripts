@@ -77,10 +77,10 @@ function checkoutCommit() {
 ## Download the latest released version of Coreboot
 ################################################################################
 function downloadCoreboot() {
-  CB_RELEASES=$(wget -q -O- https://coreboot.org/releases/sha256sum.txt  | sed 's/[^*]*\*//')
+  CB_RELEASES=$(wget -q -O- https://coreboot.org/releases/sha256sum.txt  | sed 's/.*  //' | grep -E "\.tar\.xz$")
 
   LATEST_RELEASE=$(echo -n "$CB_RELEASES" | grep "coreboot-" | grep -v "coreboot-blobs-" | sort -V | tail -n1)
-  LATEST_BLOBS=$(echo -n "$CB_RELEASES" | grep "coreboot-blobs-" | sort -V | tail -n1)
+  LATEST_BLOBS=$(echo -n "$CB_RELEASES" | grep "coreboot-blobs-" | sort -V |  tail -n1)
   COREBOOT_VERSION=$(echo -n "$LATEST_RELEASE"  | sed 's/coreboot-//' | sed 's/.tar.xz//')
 
   echo "Beginning download of $LATEST_RELEASE..."
@@ -97,9 +97,8 @@ function downloadCoreboot() {
 
 
 ################################################################################
-## MAIN FUNCTION: download/clone/checkout appropriate version of CoreBoot
-########################################
-########################################################################################################################
+## MAIN FUNCTION: download/clone/checkout appropriate version of coreboot
+#################################################################################
 function downloadOrUpdateCoreboot() {
   if [ -z "$COREBOOT_COMMIT" ] && [ -z "$COREBOOT_TAG" ] && [ -z "$IS_BUILD_DIR_EMPTY" ]; then
     # If a no commit nor tag is given and the directory is empty download Coreboot release
