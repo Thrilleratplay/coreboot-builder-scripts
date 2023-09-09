@@ -61,10 +61,10 @@ function checkoutTag() {
 ################################################################################
 function checkoutCommit() {
   cd "$DOCKER_COREBOOT_DIR" || exit
-  # edge should checkout master
+  # edge should checkout main
   git checkout "$COREBOOT_COMMIT" || exit
 
-  if  [ "$COREBOOT_COMMIT" == "master"  ]; then
+  if  [ "$COREBOOT_COMMIT" == "main"  ]; then
     git pull --all
   fi
 

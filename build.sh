@@ -46,7 +46,7 @@ while :
 do
     case "$1" in
       --bleeding-edge)
-        COREBOOT_COMMIT="master"
+        COREBOOT_COMMIT="main"
         shift 1;;
       --clean-slate)
         CLEAN_SLATE=true
