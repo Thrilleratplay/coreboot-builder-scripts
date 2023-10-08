@@ -1,9 +1,5 @@
 # Lenovo X230 Tablet
 
-### Prep work
-As long as only the BIOS partition is being flashed without the VGA blob, the stock BIOS
- back up is not required to compile.
-
 ### Compiling
 Build the latest merged into the master git branch:  
 `./build.sh --bleeding-edge x230t`
