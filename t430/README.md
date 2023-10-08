@@ -1,10 +1,6 @@
-# Lenovo t430
+# Lenovo T430
 
 **NOTE**: This has only been tested with a T430 with Intel HD Video.  NVidia video may or may not work.
-
-### Prep work
-As long as only the BIOS partition is being flashed without the VGA blob, the stock BIOS
- back up is not required to compile.
 
 ### Compiling
 Build the latest merged into the master git branch:  
