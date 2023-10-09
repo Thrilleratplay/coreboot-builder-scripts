@@ -1,17 +1,18 @@
-Coreboot Builder scripts
-==========
-[![Build Status](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts.svg?branch=master)](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts)
+# Coreboot Builder scripts (SeaBIOS payload)
 
+==========
+
+[![Build Status](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts.svg?branch=master)](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts)
 
 Bash scripts and config files to simplify building of Coreboot using the official coreboot-sdk docker image.
 
-
-
 ## BEFORE YOU BEGIN !!!!!
+
+SeaBIOS is a legacy BIOS payload.  If you would want a UEFI payload, it is advised to use the [edk2 branch](https://github.com/Thrilleratplay/coreboot-builder-scripts/tree/edk2)
 
 If your device has the stock BIOS installed, you must flash the BIOS chip externally first. I suggest starting with [Skulls](https://github.com/merge/skulls) which makes that first install as painless as possible.  
 
-While the compiled Coreboot builds this repo generates can be flashed externally, the intent of this project is to simplify updating an existing Coreboot BIOS.  
+While the compiled Coreboot builds this repo generates can be flashed externally, see [External flashable ROMs](#external-flashable-roms) the intent of this project is to simplify updating an existing Coreboot BIOS.  
 
 ## Usage
 
@@ -32,6 +33,7 @@ Once the build is complete, you will be asked to backup the existing and flash t
 NOTE: Internal flashing can only be complete if Coreboot has already been flashed externally and ifd has been unlocked.
 
 ## Examples
+
 * Build the latest release ([Coreboot Releases](https://coreboot.org/downloads.html)):  
   `./build.sh X230`
 
@@ -42,21 +44,50 @@ NOTE: Internal flashing can only be complete if Coreboot has already been flashe
 
 Any config denoted with an `X` is a device I own and have personally tested the latest configuration on.
 
-| Model | SeaBIOS | EDK2 |
-| --- | --- | --- |
-| [T430](t430/README.md) | | |
-| W530 | | |
-| W541 | | |
-| [X220](x220/README.md) | X | |
-| [X220 Tablet](x220/README.md) | | |
-| [X230](x230/README.md) | | |
-| [X230 Tablet](x230t/README.md) | | |
-| X230 FHD | | |
-| X1 Carbon Gen 1 | | |
+| Model | SeaBIOS | EDK2 | Total size/chip configuration |
+| --- | --- | --- | --- |
+| [X220](x220/README.md) | X | | 8Mb |
+| [X220 Tablet](x220/README.md) | X | | 8Mb |
+| [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
+| [X230 Tablet](x230t/README.md) | X | | 12Mb (8Mb + 4Mb) |
+| [T430](t430/README.md) | X | | 12Mb (8Mb + 4Mb) |
+| [W530](W530/README.md) | X | | 12Mb (8Mb + 4Mb) |
 
-## Configuration
+**Other models:**
 
-The make configs include
-* Primary payload is the latest stable SeaBIOS
-* All secondary payloads are added by default
-* High resolution libgfxinit is used over legacy framebuffer and VGA BIOS
+| Model | Note |
+| --- | --- |
+| x230 FHD Mod| I own one but has a short and cannot test |
+| X1 Carbon Gen1 | WIP |
+| W541 | WIP |
+
+## External flashable ROMs
+
+A full externally flashable ROM can be generated using these scrips if coreboot is build with:
+
+* Intel Firmware Descriptor (IFD)
+* Intel Management Engine (ME)
+* Intel Gigabit Ethernet firmware (GbE)
+
+These are included with your stock BIOS, which you should have a backup of having read the original contends using flashrom.
+  There is a helper function in each model's `compile.sh` that will compile ifdtool, extract the pieces and place them in the
+  default spots for coreboot to locate.
+
+Steps:
+
+1. If the backup was created by reading from two physical chips (See `Total size/chip configuration` above) is from two chips,
+  they can be concatenated together using the cat command to create a full 12Mb ROM `cat my_8mb_backup.rom my_4mb_backup.rom > stock_bios.bin`
+  .  If the model only have one 8mb chip, skip this step.
+2. Copy the full backup ROM into the `stock_bios` directory under the corresponding model directory.
+3. Uncomment the following line in model's `config.sh` file.  `stock_bios.bin` should be changed to be the name of the file in the `stock_bios` directory.
+
+```sh
+# extractStockBios "$MAINBOARD" "$MODEL" "stock_bios.bin"
+```
+
+4. Use the `--config` flag to enter the config menu.  Under `Chipset` enable the following:
+   * `Add Intel descriptor.bin file`
+   * `Add Intel ME/TXE firmware`
+     * `Verify the integrity of the supplied ME/TXE firmware`
+   * `Strip down the Intel ME/TXE firmware`
+   * `Add gigabit ethernet configuration`
