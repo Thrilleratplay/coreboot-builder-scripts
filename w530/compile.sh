@@ -2,15 +2,17 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 # shellcheck disable=SC1091
-source /home/coreboot/common_scripts/variables.sh
-source /home/coreboot/common_scripts/download_coreboot.sh
-source /home/coreboot/common_scripts/config_and_make.sh
+source /home/coreboot/common_scripts/./variables.sh
+source /home/coreboot/common_scripts/./download_coreboot.sh
+source /home/coreboot/common_scripts/./config_and_make.sh
+source /home/coreboot/common_scripts/./extract_stockbios.sh
+source /home/coreboot/common_scripts/./copy_bootsplash.sh
 
 ################################################################################
 ## MODEL VARIABLES
 ################################################################################
 MAINBOARD="lenovo"
-MODEL="x230_fhd"
+MODEL="w530"
 
 ################################################################################
 
@@ -19,12 +21,16 @@ MODEL="x230_fhd"
 ###############################################
 downloadOrUpdateCoreboot
 
-cd "$DOCKER_COREBOOT_DIR" || exit;
+##############################################################
+##   Export Stock BIOS GBE/ME/IDF (Optional for updating)   ##
+##############################################################
+# uncomment next line to enable
+# extractStockBios "$MAINBOARD" "$MODEL" "stock_bios.bin"
 
-# https://stackoverflow.com/questions/7830728/warning-on-diff-renamelimit-variable-when-doing-git-push/28064699#28064699
-git config merge.renameLimit 999999
-
-git fetch "https://review.coreboot.org/coreboot" refs/changes/50/28950/12 && git cherry-pick FETCH_HEAD
+#############################
+##   Copy bootsplash.jpg   ##
+#############################
+copySeaBiosBootsplash
 
 ##############################
 ##   Copy config and make   ##

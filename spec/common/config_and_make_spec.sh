@@ -118,7 +118,9 @@ Describe "config_and_make.sh"
       The line 7 of output should eq "defconfig"
       The line 8 of output should eq "make called with parameters:"
       The line 9 of output should eq "nconfig"
-      The line 10 of output should eq "make called without parameters"
+      The line 10 of output should eq "make called with parameters:"
+      The line 11 of output should eq "savedefconfig"
+      The line 12 of output should eq "make called without parameters"
     End
 
     AfterAll

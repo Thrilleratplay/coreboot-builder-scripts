@@ -106,14 +106,14 @@ Describe "download_coreboot.sh"
       The line 6 of output should eq "submodule update --recursive --remote"
     End
 
-    It "checkout git repo by master commit"
-      export COREBOOT_COMMIT="master"
+    It "checkout git repo by main commit"
+      export COREBOOT_COMMIT="main"
 
       When call checkoutCommit
       The line 1 of output should eq "cd called with parameters:"
       The line 2 of output should eq "$TEST_TMP_DIR"
       The line 3 of output should eq "git called with parameters:"
-      The line 4 of output should eq "checkout master"
+      The line 4 of output should eq "checkout main"
       The line 5 of output should eq "git called with parameters:"
       The line 6 of output should eq "pull --all"
       The line 7 of output should eq "git called with parameters:"

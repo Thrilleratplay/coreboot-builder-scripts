@@ -38,15 +38,25 @@ NOTE: Internal flashing can only be complete if Coreboot has already been flashe
 * Build the latest commit  
     `./build.sh --config --bleeding-edge X230`
 
+## Device Testing
+
+Any config denoted with an `X` is a device I own and have personally tested the latest configuration on.
+
+| Model | SeaBIOS | EDK2 |
+| --- | --- | --- |
+| [T430](t430/README.md) | | |
+| W530 | | |
+| W541 | | |
+| [X220](x220/README.md) | X | |
+| [X220 Tablet](x220/README.md) | | |
+| [X230](x230/README.md) | | |
+| [X230 Tablet](x230t/README.md) | | |
+| X230 FHD | | |
+| X1 Carbon Gen 1 | | |
+
 ## Configuration
 
 The make configs include
 * Primary payload is the latest stable SeaBIOS
 * All secondary payloads are added by default
 * High resolution libgfxinit is used over legacy framebuffer and VGA BIOS
-
-## Per device compiling and flashing details
-* [Lenovo Thinkpad X220 and x220 Tablet](x220/README.md)
-* [Lenovo Thinkpad X230](x230/README.md)
-* [Lenovo Thinkpad X230 Tablet](x230t/README.md)
-* [Lenovo Thinkpad T430](t430/README.md)

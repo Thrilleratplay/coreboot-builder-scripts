@@ -133,7 +133,7 @@ Describe "build.sh"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" --bleeding-edge t800
     The status should be failure
-    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=main -e COREBOOT_TAG= -e COREBOOT_CONFIG= coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
 
@@ -167,7 +167,7 @@ Describe "build.sh"
     cd "$TEST_TMP_DIR" || exit
     When run source "$PROJECT_PATH/build.sh" --bleeding-edge -i t800
     The status should be failure
-    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=master -e COREBOOT_TAG= -e COREBOOT_CONFIG=true coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
+    The output should eq "run --rm -it --user $(id -u):$(id -g) -v $TEST_TMP_DIR/t800/build:/home/coreboot/cb_build -v $TEST_TMP_DIR/t800:/home/coreboot/scripts -v $TEST_TMP_DIR/common:/home/coreboot/common_scripts -v $TEST_TMP_DIR/t800/stock_bios:/home/coreboot/stock_bios/:ro -e COREBOOT_COMMIT=main -e COREBOOT_TAG= -e COREBOOT_CONFIG=true coreboot/coreboot-sdk:12345 /home/coreboot/scripts/compile.sh"
   End
 
   It "test with only valid model and flash after build flag"

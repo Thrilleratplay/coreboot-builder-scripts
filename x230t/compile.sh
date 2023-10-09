@@ -2,9 +2,11 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 # shellcheck disable=SC1091
-source /home/coreboot/common_scripts/variables.sh
-source /home/coreboot/common_scripts/download_coreboot.sh
-source /home/coreboot/common_scripts/config_and_make.sh
+source /home/coreboot/common_scripts/./variables.sh
+source /home/coreboot/common_scripts/./download_coreboot.sh
+source /home/coreboot/common_scripts/./config_and_make.sh
+source /home/coreboot/common_scripts/./extract_stockbios.sh
+source /home/coreboot/common_scripts/./copy_bootsplash.sh
 
 ################################################################################
 ## MODEL VARIABLES
@@ -19,13 +21,21 @@ MODEL="x230t"
 ###############################################
 downloadOrUpdateCoreboot
 
+##############################################################
+##   Export Stock BIOS GBE/ME/IDF (Optional for updating)   ##
+##############################################################
+# uncomment next line to enable
+# extractStockBios "$MAINBOARD" "$MODEL" "stock_bios.bin"
+
+#############################
+##   Copy bootsplash.jpg   ##
+#############################
+copySeaBiosBootsplash
+
 ##############################
 ##   Copy config and make   ##
 ##############################
 configAndMake
-
-make savedefconfig
-exit
 
 #####################
 ##   Post build    ##
