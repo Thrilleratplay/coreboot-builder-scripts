@@ -1,4 +1,4 @@
-# Coreboot Builder scripts (SeaBIOS payload)
+# Coreboot Builder scripts (EDK2/Tianocore payload)
 
 [![Build Status](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts.svg?branch=master)](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts)
 
@@ -6,7 +6,7 @@ Bash scripts and config files to simplify building of Coreboot using the officia
 
 ## BEFORE YOU BEGIN !!!!!
 
-SeaBIOS is a legacy BIOS payload.  If you would want a UEFI payload, it is advised to use the [edk2 branch](https://github.com/Thrilleratplay/coreboot-builder-scripts/tree/edk2)
+EDK2/Tianocore is a UEFI payload.  If you would want a legacy BIOS payload, it is advised to use the [seabios branch](https://github.com/Thrilleratplay/coreboot-builder-scripts/tree/seabios)
 
 If your device has the stock BIOS installed, you must flash the BIOS chip externally first. I suggest starting with [Skulls](https://github.com/merge/skulls) which makes that first install as painless as possible.  
 
