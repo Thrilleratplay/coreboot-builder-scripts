@@ -1,7 +1,5 @@
 # Coreboot Builder scripts (SeaBIOS payload)
 
-==========
-
 [![Build Status](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts.svg?branch=master)](https://travis-ci.org/Thrilleratplay/coreboot-builder-scripts)
 
 Bash scripts and config files to simplify building of Coreboot using the official coreboot-sdk docker image.
@@ -46,20 +44,20 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 
 | Model | SeaBIOS | EDK2 | Total size/chip configuration |
 | --- | --- | --- | --- |
+| [T430](t430/README.md) | X | | 12Mb (8Mb + 4Mb) |
+| [W530](W530/README.md) | X | | 12Mb (8Mb + 4Mb) |
 | [X220](x220/README.md) | X | | 8Mb |
 | [X220 Tablet](x220/README.md) | X | | 8Mb |
 | [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
 | [X230 Tablet](x230t/README.md) | X | | 12Mb (8Mb + 4Mb) |
-| [T430](t430/README.md) | X | | 12Mb (8Mb + 4Mb) |
-| [W530](W530/README.md) | X | | 12Mb (8Mb + 4Mb) |
 
 **Other models:**
 
 | Model | Note |
 | --- | --- |
-| x230 FHD Mod| I own one but has a short and cannot test |
-| X1 Carbon Gen1 | WIP |
 | W541 | WIP |
+| X1 Carbon Gen1 | WIP |
+| x230 FHD Mod| I own one but has a short and cannot test |
 
 ## External flashable ROMs
 
