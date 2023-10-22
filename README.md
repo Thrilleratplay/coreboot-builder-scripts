@@ -6,7 +6,7 @@ Bash scripts and config files to simplify building of Coreboot using the officia
 
 ## BEFORE YOU BEGIN !!!!!
 
-SeaBIOS is a legacy BIOS payload.  If you would want a UEFI payload, it is advised to use the [edk2 branch (Work In Progress)](https://github.com/Thrilleratplay/coreboot-builder-scripts/tree/edk2)
+SeaBIOS is a legacy BIOS payload.  If you would want a UEFI payload, it is advised to use the [edk2 branch](https://github.com/Thrilleratplay/coreboot-builder-scripts/tree/edk2)
 
 If your device has the stock BIOS installed, you must flash the BIOS chip externally first. I suggest starting with [Skulls](https://github.com/merge/skulls) which makes that first install as painless as possible.  
 
@@ -44,12 +44,12 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 
 | Model | SeaBIOS | EDK2 | Total size/chip configuration |
 | --- | --- | --- | --- |
-| [T430](t430/README.md) | X | | 12Mb (8Mb + 4Mb) |
-| [W530](W530/README.md) | X | | 12Mb (8Mb + 4Mb) |
-| [X220](x220/README.md) | X | | 8Mb |
-| [X220 Tablet](x220/README.md) | X | | 8Mb |
+| [T430](t430/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [W530](W530/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [X220](x220/README.md) | X | X | 8Mb |
+| [X220 Tablet](x220/README.md) | X | X | 8Mb |
 | [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
-| [X230 Tablet](x230t/README.md) | X | | 12Mb (8Mb + 4Mb) |
+| [X230 Tablet](x230t/README.md) | X |X | 12Mb (8Mb + 4Mb) |
 
 **Other models:**
 
@@ -58,6 +58,12 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 | W541 | WIP |
 | X1 Carbon Gen1 | WIP |
 | x230 FHD Mod| I own one but has a short and cannot test |
+
+## Bootsplash
+
+The GIMP file for the bootsplash can be [found here](https://github.com/Thrilleratplay/bootsplash-coreboot).
+  If creating a custom bootsplash be sure to follow the instructions found in this
+  [Purism blog post( scroll down to "The boot splash—Beauty is Pain")](https://puri.sm/posts/librem-13-coreboot-report-february-25th-2017/)
 
 ## External flashable ROMs
 
