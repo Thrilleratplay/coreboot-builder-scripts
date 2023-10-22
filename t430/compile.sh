@@ -30,7 +30,7 @@ downloadOrUpdateCoreboot
 #############################
 ##   Copy bootsplash.jpg   ##
 #############################
-copySeaBiosBootsplash
+copyEdk2Bootsplash
 
 ##############################
 ##   Copy config and make   ##

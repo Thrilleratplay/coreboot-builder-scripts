@@ -11,10 +11,10 @@ fi
 ################################################################################
 ##
 ################################################################################
-function copySeaBiosBootsplash() {
+function copyEdk2Bootsplash() {
   if [ ! -e "$DOCKER_COREBOOT_DIR/bootsplash.jpg" ]; then
-    cp "$DOCKER_COMMON_SCRIPT_DIR/$SEABIOS_BOOTSPLASH_JPEG" "$DOCKER_COREBOOT_DIR/bootsplash.jpg" || exit
-    echo "Copied SeaBIOS bootslash.jpg"
+    cp "$DOCKER_COMMON_SCRIPT_DIR/$EDK2_BOOTSPLASH_JPEG" "$DOCKER_COREBOOT_DIR/bootsplash.jpg" || exit
+    echo "Copied EDK2 bootslash.jpg"
   else
     echo "bootsplash.jpg exists.  Skipping."
   fi

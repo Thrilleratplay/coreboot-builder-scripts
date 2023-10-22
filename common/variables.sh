@@ -13,4 +13,4 @@ export DOCKER_COREBOOT_DIR="$DOCKER_ROOT_DIR/cb_build"
 export DOCKER_COREBOOT_CONFIG_DIR="$DOCKER_COREBOOT_DIR/configs"
 export DOCKER_STOCK_BIOS_DIR="$DOCKER_ROOT_DIR/stock_bios/"
 
-export SEABIOS_BOOTSPLASH_JPEG="bootsplash_f2_menu_1024x768.jpg"
+export EDK2_BOOTSPLASH_JPEG="bootsplash_1024x768.jpg"
