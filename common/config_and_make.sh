@@ -46,7 +46,7 @@ function configAndMake() {
   make defconfig
 
   if [ "$COREBOOT_CONFIG" ]; then
-    make nconfig
+    make nconfig || exit
 
     # generate clean defconfig based on changes
     make savedefconfig
