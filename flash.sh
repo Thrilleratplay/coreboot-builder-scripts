@@ -51,7 +51,7 @@ while true; do
     case $yn in
         [Yy]* )
           # Back up and write BIOS
-          sudo "$PWD/$MODEL/./flashrom.sh" "$ROM_FILE"
+          sh -c "sudo $PWD/$MODEL/flashrom.sh $ROM_FILE"
           break;;
         [Nn]* )
           exit;;
