@@ -57,7 +57,13 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 | --- | --- |
 | W541 | WIP |
 | X1 Carbon Gen1 | WIP |
-| x230 FHD Mod| I own one but has a short and cannot test |
+| x230 FHD Mod| I own one but has a short and cannot test.  If someone wants to test this please reach out. |
+
+## Bootsplash
+
+The GIMP file for the bootsplash can be [found here](https://github.com/Thrilleratplay/bootsplash-coreboot).
+  If creating a custom bootsplash be sure to follow the instructions found in this
+  [Purism blog post( scroll down to "The boot splash—Beauty is Pain")](https://puri.sm/posts/librem-13-coreboot-report-february-25th-2017/)
 
 ## Bootsplash
 
