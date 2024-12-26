@@ -65,6 +65,12 @@ The GIMP file for the bootsplash can be [found here](https://github.com/Thriller
   If creating a custom bootsplash be sure to follow the instructions found in this
   [Purism blog post( scroll down to "The boot splash—Beauty is Pain")](https://puri.sm/posts/librem-13-coreboot-report-february-25th-2017/)
 
+## Bootsplash
+
+The GIMP file for the bootsplash can be [found here](https://github.com/Thrilleratplay/bootsplash-coreboot).
+  If creating a custom bootsplash be sure to follow the instructions found in this
+  [Purism blog post( scroll down to "The boot splash—Beauty is Pain")](https://puri.sm/posts/librem-13-coreboot-report-february-25th-2017/)
+
 ## External flashable ROMs
 
 A full externally flashable ROM can be generated using these scrips if coreboot is build with:
