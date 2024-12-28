@@ -46,6 +46,7 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 | --- | --- | --- | --- |
 | [T430](t430/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [W530](W530/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [W541](W541/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [X220](x220/README.md) | X | X | 8Mb |
 | [X220 Tablet](x220/README.md) | X | X | 8Mb |
 | [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
@@ -55,7 +56,6 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 
 | Model | Note |
 | --- | --- |
-| W541 | WIP |
 | X1 Carbon Gen1 | WIP |
 | x230 FHD Mod| I own one but has a short and cannot test.  If someone wants to test this please reach out. |
 
