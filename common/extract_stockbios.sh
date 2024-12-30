@@ -30,6 +30,7 @@ function extractStockBios() {
   MAINBOARD=$1 || null
   MODEL=$2 || null
   STOCK_BIOS_ROM=$3 || null
+  PLATFORM=$4 || null
 
   if [ -z "$MAINBOARD" ]; then
     echo "extractStockBios is missing the MAINBOARD, MODEL and STOCK_BIOS_ROM parameters." >&2
@@ -66,8 +67,14 @@ function extractStockBios() {
     cp "$DOCKER_STOCK_BIOS_DIR/$STOCK_BIOS_ROM" . || exit
 
     # unlock, extract blobs and rename
-    sh ifdtool -u "$STOCK_BIOS_ROM" || exit
-    sh ifdtool -x "$STOCK_BIOS_ROM" || exit
+    if [  -z "$PLATFORM" ]; then
+      sh ifdtool -u "$STOCK_BIOS_ROM" || exit
+      sh ifdtool -x "$STOCK_BIOS_ROM" || exit
+    else
+      sh ifdtool -p "$PLATFORM" -u "$STOCK_BIOS_ROM" || exit
+      sh ifdtool -p "$PLATFORM" -x "$STOCK_BIOS_ROM" || exit    
+    fi
+
     mv flashregion_0_flashdescriptor.bin descriptor.bin
     mv flashregion_2_intel_me.bin me.bin
     mv flashregion_3_gbe.bin gbe.bin
