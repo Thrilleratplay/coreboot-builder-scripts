@@ -44,9 +44,10 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 
 | Model | SeaBIOS | EDK2 | Total size/chip configuration |
 | --- | --- | --- | --- |
+| [M920q](m920q/README.md) | X | X | 24Mb (12Mb + 8Mb) |
 | [T430](t430/README.md) | X | X | 12Mb (8Mb + 4Mb) |
-| [W530](W530/README.md) | X | X | 12Mb (8Mb + 4Mb) |
-| [W541](W541/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [W530](w530/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [W541](w541/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [X220](x220/README.md) | X | X | 8Mb |
 | [X220 Tablet](x220/README.md) | X | X | 8Mb |
 | [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
