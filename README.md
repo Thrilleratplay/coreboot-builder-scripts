@@ -50,7 +50,7 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 | [W541](w541/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [X220](x220/README.md) | X | X | 8Mb |
 | [X220 Tablet](x220/README.md) | X | X | 8Mb |
-| [X230](x230/README.md) | | | 12Mb (8Mb + 4Mb) |
+| [X230](x230/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [X230 Tablet](x230t/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 
 **Other models:**
