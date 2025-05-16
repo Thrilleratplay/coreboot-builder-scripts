@@ -68,11 +68,11 @@ function extractStockBios() {
 
     # unlock, extract blobs and rename
     if [  -z "$PLATFORM" ]; then
-      sh ifdtool -u "$STOCK_BIOS_ROM" || exit
-      sh ifdtool -x "$STOCK_BIOS_ROM" || exit
+      sh -c "./ifdtool -u $STOCK_BIOS_ROM" || exit
+      sh -c "./ifdtool -x $STOCK_BIOS_ROM" || exit
     else
-      sh ifdtool -p "$PLATFORM" -u "$STOCK_BIOS_ROM" || exit
-      sh ifdtool -p "$PLATFORM" -x "$STOCK_BIOS_ROM" || exit    
+      sh -c "./ifdtool -p $PLATFORM -u $STOCK_BIOS_ROM" || exit
+      sh -c "./ifdtool -p $PLATFORM -x $STOCK_BIOS_ROM" || exit    
     fi
 
     mv flashregion_0_flashdescriptor.bin descriptor.bin
