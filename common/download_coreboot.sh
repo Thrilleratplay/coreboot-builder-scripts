@@ -16,21 +16,15 @@ IS_BUILD_DIR_EMPTY=$(ls -A "$DOCKER_COREBOOT_DIR")
 function gitUpdate() {
   if [ -z "$IS_BUILD_DIR_EMPTY" ]; then
     # Clone Coreboot and fetch submodules
-    git clone https://github.com/coreboot/coreboot.git "$DOCKER_COREBOOT_DIR"
+    git clone https://review.coreboot.org/coreboot "$DOCKER_COREBOOT_DIR"
     cd "$DOCKER_COREBOOT_DIR" || exit
-    git submodule update --init --recursive --remote
-
-    # blobs are ignored from updates.  Manually clone to prevent compile errors later from non empty directory cloning
-    git clone https://github.com/coreboot/blobs.git 3rdparty/blobs/
-
-    # intel-microcode are ignored from updates.  Manually clone to prevent compile errors later from non empty directory cloning
-    git clone https://github.com/coreboot/intel-microcode.git 3rdparty/intel-microcode/
+    git submodule update --init --recursive --checkout
   else
     cd "$DOCKER_COREBOOT_DIR" || exit
     git fetch --all --tags --prune
 
     if [ ! -d "$DOCKER_COREBOOT_DIR/3rdparty/intel-microcode/" ]; then
-      git clone https://github.com/coreboot/intel-microcode.git 3rdparty/intel-microcode/
+      git clone https://review.coreboot.org/intel-microcode 3rdparty/intel-microcode/
     fi
 
     cd "$DOCKER_COREBOOT_DIR/3rdparty/blobs/" || exit
@@ -50,7 +44,7 @@ function gitUpdate() {
 function checkoutTag() {
   cd "$DOCKER_COREBOOT_DIR" || exit
   git checkout tags/"$COREBOOT_TAG" || exit
-  git submodule update --recursive --remote
+  git submodule update --recursive --checkout
 }
 ################################################################################
 
@@ -68,7 +62,7 @@ function checkoutCommit() {
     git pull --all
   fi
 
-  git submodule update --recursive --remote
+  git submodule update --recursive --checkout
 }
 ################################################################################
 
