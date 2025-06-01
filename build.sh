@@ -104,5 +104,5 @@ docker run --rm -it \
     -e COREBOOT_COMMIT="$COREBOOT_COMMIT" \
     -e COREBOOT_TAG="$COREBOOT_TAG" \
     -e COREBOOT_CONFIG="$COREBOOT_CONFIG" \
-    coreboot/coreboot-sdk:"$COREBOOT_SDK_VERSION" \
+    docker.io/coreboot/coreboot-sdk:"$COREBOOT_SDK_VERSION" \
     /home/coreboot/scripts/compile.sh && [ -n "$FLASH_AFTER_BUILD" ] && ./flash.sh "$MODEL"
