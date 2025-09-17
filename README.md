@@ -52,13 +52,13 @@ Any config denoted with an `X` is a device I own and have personally tested the 
 | [X220 Tablet](x220/README.md) | X | X | 8Mb |
 | [X230](x230/README.md) | X | X | 12Mb (8Mb + 4Mb) |
 | [X230 Tablet](x230t/README.md) | X | X | 12Mb (8Mb + 4Mb) |
+| [X230 FHD/EDP mod](x230_edp/README.md) | | | 12Mb (8Mb + 4Mb) |
 
 **Other models:**
 
 | Model | Note |
 | --- | --- |
 | X1 Carbon Gen1 | WIP |
-| x230 FHD Mod| I own one but has a short and cannot test.  If someone wants to test this please reach out. |
 
 ## Bootsplash
 
