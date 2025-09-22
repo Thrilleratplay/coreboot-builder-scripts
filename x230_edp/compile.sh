@@ -23,9 +23,10 @@ downloadOrUpdateCoreboot
 
 ##############################################################
 ##   Export Stock BIOS GBE/ME/IDF (Optional for updating)   ##
+##   NOTE: the model must be x230 and not x230_edp
 ##############################################################
 # uncomment next line to enable
-# extractStockBios "$MAINBOARD" "$MODEL" "stock_bios.bin"
+# extractStockBios "$MAINBOARD" x230 "stock_bios.bin"
 
 #############################
 ##   Copy bootsplash.jpg   ##
