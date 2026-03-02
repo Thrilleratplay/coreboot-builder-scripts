@@ -25,7 +25,7 @@ downloadOrUpdateCoreboot
 ##   Export Stock BIOS GBE/ME/IDF (Optional for updating)   ##
 ##############################################################
 # uncomment next line to enable
-# extractStockBios "$MAINBOARD" "$MODEL" "stock_bios.bin" "sklkbl"
+# extractStockBios "$MAINBOARD" "m720q_m920q" "stock_bios.bin" "sklkbl"
 
 #############################
 ##   Copy bootsplash.jpg   ##
