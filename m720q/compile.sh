@@ -12,7 +12,7 @@ source /home/coreboot/common_scripts/./copy_bootsplash.sh
 ## MODEL VARIABLES
 ################################################################################
 MAINBOARD="lenovo"
-MODEL="m920q"
+MODEL="m720q"
 
 ################################################################################
 
@@ -46,11 +46,5 @@ if [ ! -f "$DOCKER_COREBOOT_DIR/build/coreboot.rom" ]; then
 else
   mv "$DOCKER_COREBOOT_DIR/build/coreboot.rom" "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-complete.rom"
   
-  #split chips
-  dd if="$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-complete.rom" of="$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip1.rom" bs=16M count=1
-  dd if="$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-complete.rom" of="$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip2.rom" bs=8M skip=2
-
   sha256sum "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-complete.rom" > "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-complete.rom.sha256"
-  sha256sum "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip1.rom" > "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip1.rom-sha256"
-  sha256sum "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip2.rom" > "$DOCKER_COREBOOT_DIR/coreboot_$MAINBOARD-$MODEL-chip2.rom-sha256"
 fi
