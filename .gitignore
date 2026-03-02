@@ -2,3 +2,7 @@
 */stock_bios/
 coreboot_*
 coverage/
+*.log
+*.old
+*.bak
+*.test
