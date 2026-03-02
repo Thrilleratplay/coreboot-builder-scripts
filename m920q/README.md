@@ -1,9 +1,11 @@
 # Lenovo M920q
 
 ### Known issues
- * [Front audio jacks do not work](https://review.coreboot.org/c/coreboot/+/80609)
+
+* [Front audio jacks do not work](https://review.coreboot.org/c/coreboot/+/80609)
 
 ### Compiling
+
 Build the latest merged into the master git branch:  
 `./build.sh --bleeding-edge m920q`
 
@@ -11,7 +13,9 @@ Latest stable release:
  `./build.sh m920q`
 
 ### Output
- ##### Internal flashing
+
+##### Internal flashing
+
 `coreboot_lenovo-m920q-complete.rom` - The complete Coreboot ROM is the 24MB version used for internal flashing.
 `coreboot_lenovo-m920q-complete.rom.sha256` - sha256 checksum of 24MB Coreboot Rom
 
@@ -19,6 +23,7 @@ Latest stable release:
 
 
 ##### External flashing
+
 NOTE: If flashing externally, be sure to include the IFD, GBE and ME blobs.  Failing to do so will prevent booting.  
 
 `coreboot_lenovo-m920q-chip1.rom` - The 16MB Coreboot BIOS that can be flashed externally onto the 16MB BIOS chip.
@@ -27,7 +32,7 @@ NOTE: If flashing externally, be sure to include the IFD, GBE and ME blobs.  Fai
 `coreboot_lenovo-m920q-chip2.rom` - The 8MB Coreboot BIOS that can be flashed externally onto the 8M BIOS chip.
 `coreboot_lenovo-m920q-chip2.rom.sha256` - sha256 checksum of 8MB Coreboot BIOS
 
-*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatiable with ME V12.  Use the [https://github.com/XutaxKamay/me_cleaner](XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
+*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatible with ME V12.  Use the [https://github.com/XutaxKamay/me_cleaner](XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
 
 ### Debug
 
