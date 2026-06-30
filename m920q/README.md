@@ -32,7 +32,7 @@ NOTE: If flashing externally, be sure to include the IFD, GBE and ME blobs.  Fai
 `coreboot_lenovo-m920q-chip2.rom` - The 8MB Coreboot BIOS that can be flashed externally onto the 8M BIOS chip.
 `coreboot_lenovo-m920q-chip2.rom.sha256` - sha256 checksum of 8MB Coreboot BIOS
 
-*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatible with ME V12.  Use the [https://github.com/XutaxKamay/me_cleaner](XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
+*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatible with ME V12.  Use the [XutaxKamay/me_cleaner](https://github.com/XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
 
 ### Debug
 

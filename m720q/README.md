@@ -25,7 +25,7 @@ Latest stable release:
 
 NOTE: If flashing externally, be sure to include the IFD, GBE and ME blobs.  Failing to do so will prevent booting.  
 
-*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatible with ME V12.  Use the [https://github.com/XutaxKamay/me_cleaner](XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
+*NOTE:* Version of `me_cleaner` included in the coreboot repo is does not compatible with ME V12.  Use the [XutaxKamay/me_cleaner](https://github.com/XutaxKamay/me_cleaner) fork with the `--soft-disable` flag.
 
 ### Debug
 
